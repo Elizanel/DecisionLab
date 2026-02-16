@@ -1,11 +1,3 @@
-### Priorities
-![Priorities](./priorities.png)
-
-### Options
-![Options](./options.png)
-
-### Recommendation
-![Recommendation](./recommendation.png)
 
 # DecisionLab
 
@@ -61,6 +53,17 @@ Higher score = better match based on your priorities.
 - JavaScript
 - Modern CSS
 - useState / useMemo hooks
+  
+### Screenshots
+
+### Priorities
+![Priorities](./priorities.png)
+
+### Options
+![Options](./options.png)
+
+### Recommendation
+![Recommendation](./recommendation.png)
 
 ---
 ## Run Locally
