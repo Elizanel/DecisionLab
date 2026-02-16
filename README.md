@@ -1,16 +1,71 @@
-# React + Vite
+# DecisionLab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, interactive weighted decision-making tool built with React.
 
-Currently, two official plugins are available:
+DecisionLab helps you compare multiple options using adjustable priorities.  
+It calculates a weighted score and highlights the strongest option based on what matters most to you.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Why I Built This
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+When comparing career paths, projects, or life decisions, it’s easy to rely on emotion alone.  
+DecisionLab turns subjective preferences into structured, weighted comparisons.
 
-## Expanding the ESLint configuration
+It demonstrates:
+- State management in React
+- Derived data computation with `useMemo`
+- Controlled form inputs
+- Component composition
+- Clean UI styling with modern CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Features
+
+- Add and remove custom options
+- Adjust priority weights (0–10)
+- Stress counts negatively in scoring
+- Real-time score updates
+- Transparent score breakdown
+- Clean, modern UI
+
+---
+
+## Scoring Formula
+
+For each option:
+score =
+(growth × weight_growth) +
+(salary × weight_salary) +
+(interest × weight_interest) -
+(stress × weight_stress)
+
+Higher score = better match based on your priorities.
+
+---
+
+## Tech Stack
+
+- React
+- Vite
+- JavaScript
+- Modern CSS
+- useState / useMemo hooks
+
+---
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
+
+Future Improvements
+	•	Persist data to local storage
+	•	Save / load decision sets
+	•	Visual score breakdown chart
+	•	Mobile polish
+
+# 📸
+
