@@ -67,5 +67,13 @@ Future Improvements
 	•	Visual score breakdown chart
 	•	Mobile polish
 
-___
+## Screenshots
 
+### Priorities
+![Priorities](./priorities.png)
+
+### Options
+![Options](./options.png)
+
+### Recommendation
+![Recommendation](./recommendation.png)
