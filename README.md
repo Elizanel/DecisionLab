@@ -54,7 +54,6 @@ Higher score = better match based on your priorities.
 - useState / useMemo hooks
 
 ---
-
 ## Run Locally
 
 ```bash
