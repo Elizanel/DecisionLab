@@ -1,3 +1,12 @@
+### Priorities
+![Priorities](./priorities.png)
+
+### Options
+![Options](./options.png)
+
+### Recommendation
+![Recommendation](./recommendation.png)
+
 # DecisionLab
 
 A clean, interactive weighted decision-making tool built with React.
@@ -65,14 +74,3 @@ Future Improvements
 	•	Save / load decision sets
 	•	Visual score breakdown chart
 	•	Mobile polish
-
-## Screenshots
-
-### Priorities
-![Priorities](./priorities.png)
-
-### Options
-![Options](./options.png)
-
-### Recommendation
-![Recommendation](./recommendation.png)
