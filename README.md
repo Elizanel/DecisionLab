@@ -69,14 +69,3 @@ Future Improvements
 
 ___
 
-## Screenshots
-
-### Priorities
-![Priorities](./priorities.png)
-
-### Options
-![Options](./options.png)
-
-### Recommendation
-![Recommendation](./recommendation.png)
-
