@@ -69,10 +69,14 @@ Future Improvements
 
 ___
 
-## Photo
-<img width="1247" height="693" alt="Screenshot 2026-02-16 at 4 41 28 PM" src="https://github.com/user-attachments/assets/5875ab56-d134-402b-a853-b7a3814ce245" />
+## Screenshots
 
-<img width="1200" height="787" alt="Screenshot 2026-02-16 at 4 41 36 PM" src="https://github.com/user-attachments/assets/62e96d28-0ab7-4606-a2b3-d46546f25c88" />
+### Priorities
+![Priorities](./priorities.png)
 
-<img width="1163" height="332" alt="Screenshot 2026-02-16 at 4 41 43 PM" src="https://github.com/user-attachments/assets/d11c2310-9544-4421-bc5c-24ebeb010231" />
+### Options
+![Options](./options.png)
+
+### Recommendation
+![Recommendation](./recommendation.png)
 
