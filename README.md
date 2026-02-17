@@ -1,6 +1,7 @@
 
 # DecisionLab
 
+Link: https://decision-lab-six.vercel.app
 A clean, interactive weighted decision-making tool built with React.
 
 DecisionLab helps you compare multiple options using adjustable priorities.  
