@@ -1,9 +1,120 @@
 
+/* Theme tokens */
 :root {
   --pink-primary: #ff4fa3;
+  --pink-hover: #e23a8d;
   --pink-soft: #ffe6f1;
+  --pink-light: #fff3f9;
   --pink-border: #ffc3df;
+
+  --text-dark: #0f172a;
+  --text-med: #475569;
+  --text-light: #64748b;
+
+  --border: rgba(15, 23, 42, 0.10);
+  --border-soft: rgba(15, 23, 42, 0.06);
+  --shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
 }
+
+/* Base */
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--text-dark);
+  margin: 0;
+  background: linear-gradient(180deg, #ffffff 0%, #fff7fb 100%);
+}
+
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  margin: 0;
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 30px; margin-bottom: 14px; }
+h3 { font-size: 20px; }
+
+/* Layout */
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 42px 20px 60px;
+  text-align: center;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+/* Header */
+.header {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  margin-bottom: 12px;
+}
+
+.sub {
+  max-width: 760px;
+  margin: 10px auto 0;
+  color: var(--text-med);
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+/* Buttons */
+.btn, button {
+  background: var(--pink-primary);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+  font-weight: 700;
+}
+
+.btn:hover, button:hover {
+  background: var(--pink-hover);
+  transform: translateY(-1px);
+}
+
+.btn.secondary {
+  background: #fff;
+  color: var(--text-dark);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+.btn.secondary:hover {
+  background: #fff;
+  border-color: rgba(15, 23, 42, 0.18);
+}
+
+/* =========================
+   Priorities (Weights)
+   ========================= */
+
+.prioritiesCard {
+  background: #fff;
+  border-radius: 18px;
+  padding: 22px;
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow);
+  margin-top: 12px;
+}
+
 .weights {
   display: flex;
   flex-direction: column;
@@ -14,7 +125,7 @@
 .weightRow {
   padding: 14px 14px 12px;
   border-radius: 14px;
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  border: 1px solid var(--border-soft);
   background: #fff;
 }
 
@@ -27,8 +138,8 @@
 
 .weightLabel {
   font-size: 14px;
-  font-weight: 650;
-  color: rgba(15, 23, 42, 0.78);
+  font-weight: 700;
+  color: var(--text-dark); /* FIX: no transparency */
 }
 
 .weightValue {
@@ -44,28 +155,24 @@
 .weightHint {
   margin-top: 8px;
   font-size: 12px;
-  color: rgba(15, 23, 42, 0.55);
+  color: var(--text-med); /* FIX: no transparency */
 }
-.prioritiesCard {
-  background: #fff;
-  border-radius: 18px;
-  padding: 22px;
-  border: 1px solid rgba(15, 23, 42, 0.06);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-  margin-top: 12px;
-}
-/* Slider base */
+
+/* Slider */
 .slider {
   width: 100%;
   -webkit-appearance: none;
   appearance: none;
   height: 8px;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--pink-primary), rgba(15, 23, 42, 0.25));
+  background: linear-gradient(
+    90deg,
+    var(--pink-primary),
+    rgba(15, 23, 42, 0.18)
+  );
   outline: none;
 }
 
-/* Slider thumb (Chrome/Safari) */
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -74,166 +181,46 @@
   border-radius: 50%;
   background: var(--pink-primary);
   border: 3px solid #fff;
-  box-shadow: 0 6px 16px rgba(255, 79, 163, 0.35);
+  box-shadow: 0 6px 16px rgba(255, 79, 163, 0.30);
   cursor: pointer;
 }
 
-/* Slider thumb (Firefox) */
 .slider::-moz-range-thumb {
   width: 18px;
   height: 18px;
   border-radius: 50%;
   background: var(--pink-primary);
   border: 3px solid #fff;
-  box-shadow: 0 6px 16px rgba(255, 79, 163, 0.35);
+  box-shadow: 0 6px 16px rgba(255, 79, 163, 0.30);
   cursor: pointer;
 }
-body {
-  font-family: 'Inter', sans-serif;
-  color: #2d2d2d;
-  margin: 0;
-}
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-}
-h1 {
-  font-size: 42px;
-}
 
-h2 {
-  font-size: 30px;
-  margin-bottom: 20px;
-}
+/* =========================
+   Option Cards
+   ========================= */
 
-.cardTitle {
-  font-size: 22px;
-}
-:root {
-  --pink-primary: #ff4fa3;
-  --pink-soft: #ffe6f1;
-  --pink-light: #fff3f9;
-  --pink-border: #ffc3df;
-  --text-dark: #2d2d2d;
-}
-.card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  border: 1px solid #eee;
-  transition: all 0.25s ease;
-}
-
-.card.best {
-  background: var(--pink-soft);
-  border: 2px solid var(--pink-primary);
-  box-shadow: 0 6px 20px rgba(255, 79, 163, 0.2);
-}
-.recommend {
-  background: var(--pink-light);
-  border: 2px solid var(--pink-border);
-  border-radius: 18px;
-  padding: 24px;
-  margin-top: 20px;
-  text-align: center;
-}
-
-.recommendTitle {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--pink-primary);
-}
-
-.recommendSub {
-  margin-top: 6px;
-  color: #555;
-}
-button {
-  background: var(--pink-primary);
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-button:hover {
-  background: #e23a8d;
-}
-.score {
-  background: var(--pink-primary);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-weight: 600;
-}
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-/* Layout helpers */
 .cards {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+  margin-top: 12px;
 }
 
-/* Card styling */
 .card {
   background: #fff;
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 18px 18px 16px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+  text-align: left;
 }
 
-/* Highlight best */
 .card.best {
-  border-color: rgba(34, 197, 94, 0.45);
-  box-shadow: 0 10px 28px rgba(34, 197, 94, 0.12);
+  background: var(--pink-light);
+  border: 2px solid var(--pink-primary);
+  box-shadow: 0 10px 28px rgba(255, 79, 163, 0.16);
 }
 
-/* Top row */
 .cardTop {
   display: flex;
   align-items: flex-start;
@@ -244,27 +231,27 @@ button:hover {
 
 .rank {
   font-size: 12px;
-  font-weight: 600;
-  color: rgba(15, 23, 42, 0.6);
+  font-weight: 700;
+  color: var(--text-light);
   margin-bottom: 4px;
 }
 
 .cardTitle {
   margin: 0;
   font-size: 18px;
-  font-weight: 700;
-  color: #0f172a;
+  font-weight: 800;
+  color: var(--text-dark);
 }
 
-/* Remove button */
 .iconBtn {
-  border: 1px solid rgba(15, 23, 42, 0.1);
+  border: 1px solid var(--border);
   background: #fff;
   border-radius: 10px;
   width: 36px;
   height: 36px;
   cursor: pointer;
   line-height: 1;
+  color: var(--text-dark);
 }
 
 /* Score row */
@@ -280,17 +267,21 @@ button:hover {
 
 .scoreLabel {
   font-size: 13px;
-  font-weight: 600;
-  color: rgba(15, 23, 42, 0.7);
+  font-weight: 700;
+  color: var(--text-med);
 }
 
 .score {
   font-size: 18px;
-  font-weight: 800;
-  color: #0f172a;
+  font-weight: 900;
+  color: var(--text-dark);
+  background: var(--pink-soft);
+  border: 1px solid var(--pink-border);
+  padding: 6px 12px;
+  border-radius: 999px;
 }
 
-/* Inputs grid */
+/* Inputs */
 .fieldGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -304,63 +295,64 @@ button:hover {
   gap: 10px;
   padding: 10px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  border: 1px solid var(--border-soft);
   background: #fff;
 }
 
 .field span {
   font-size: 13px;
-  font-weight: 600;
-  color: rgba(15, 23, 42, 0.75);
+  font-weight: 700;
+  color: var(--text-med);
 }
 
-/* Number input */
 .field input[type="number"] {
-  width: 64px;
+  width: 68px;
   padding: 6px 8px;
   border-radius: 10px;
-  border: 1px solid rgba(15, 23, 42, 0.14);
+  border: 1px solid var(--border);
   text-align: center;
-  font-weight: 600;
+  font-weight: 800;
+  color: var(--text-dark);
 }
 
-/* Mobile: one column */
+/* Mobile */
 @media (max-width: 560px) {
-  .fieldGrid {
-    grid-template-columns: 1fr;
-  }
+  .fieldGrid { grid-template-columns: 1fr; }
 }
-/* Recommendation box */
+
+/* =========================
+   Recommendation Panel
+   ========================= */
+
 .recommend {
   margin-top: 14px;
   padding: 22px;
   border-radius: 18px;
   background: #fff;
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow);
   text-align: center;
 }
 
 .recommendTitle {
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 6px;
-  color: #0f172a;
+  color: var(--pink-primary);
 }
 
 .recommendSub {
   font-size: 14px;
-  color: rgba(15, 23, 42, 0.6);
-  margin-bottom: 18px;
+  color: var(--text-med);
+  margin-bottom: 16px;
 }
 
-/* Breakdown list */
 .breakdown {
-  max-width: 360px;
+  max-width: 420px;
   margin: 0 auto;
   text-align: left;
   background: rgba(15, 23, 42, 0.03);
-  border: 1px solid rgba(15, 23, 42, 0.06);
+  border: 1px solid var(--border-soft);
   border-radius: 14px;
   padding: 12px 14px;
 }
@@ -371,24 +363,21 @@ button:hover {
   justify-content: space-between;
   padding: 10px 6px;
   font-size: 14px;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  border-bottom: 1px solid var(--border-soft);
 }
 
-.row:last-child {
-  border-bottom: none;
-}
+.row:last-child { border-bottom: none; }
 
 .row span:first-child {
-  font-weight: 600;
-  color: rgba(15, 23, 42, 0.75);
+  font-weight: 800;
+  color: var(--text-med);
 }
 
 .row span:last-child {
-  font-weight: 800;
-  color: #0f172a;
+  font-weight: 900;
+  color: var(--text-dark);
 }
 
-/* Stress row looks subtly "negative" */
 .row.neg span:first-child {
-  color: rgba(239, 68, 68, 0.9);
+  color: rgba(239, 68, 68, 0.95);
 }
