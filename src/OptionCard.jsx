@@ -28,7 +28,7 @@ export default function OptionCard({ option, rank, isBest, onChange, onRemove })
 
       {/* Score display */}
       <div className="scoreRow">
-        <span className="scoreLabel">Score</span>
+        <span className="scoreLabel">Score:</span>
         <span className="score">{option.score}</span>
       </div>
 
