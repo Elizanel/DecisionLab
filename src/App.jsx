@@ -1,77 +1,125 @@
+// I only need useState for state management
+// and useMemo to optimize derived calculations.
 import { useMemo, useState } from "react";
+
 import OptionCard from "./OptionCard";
 import WeightSliders from "./WeightSliders";
 import ResultPanel from "./ResultPanel";
+
 import "./App.css";
 
-// Default weight values (0–10) for each priority slider
+
+// DEFAULT CONFIG
+
+
+// These are the default slider values.
+// Each factor has equal importance initially (0–10 scale).
+// This makes the system neutral at startup.
 const DEFAULT_WEIGHTS = { growth: 5, salary: 5, interest: 5, stress: 5 };
 
-// Starter options so the app has something to show immediately
+// These starter options just make the UI usable immediately.
+// It prevents an empty screen and helps demonstrate scoring.
 const STARTER_OPTIONS = [
   { id: "optionA", name: "Option A", growth: 8, salary: 7, interest: 9, stress: 5 },
   { id: "optionB", name: "Option B", growth: 6, salary: 9, interest: 7, stress: 4 },
 ];
 
 export default function App() {
-  // State: the user's current priority weights (sliders)
+
+  // STATE
+
+  // weights = how important each factor is to ME (user preference)
+  // setWeights updates slider importance.
   const [weights, setWeights] = useState(DEFAULT_WEIGHTS);
 
-  // State: the list of decision options + their ratings (0–10)
+  // options = the list of choices I'm comparing
+  // each option has ratings from 0–10 for each factor.
   const [options, setOptions] = useState(STARTER_OPTIONS);
 
-  // Derived data: compute scores for each option based on weights
+  
+  // DERIVED DATA (SCORING ENGINE)
+
+  // useMemo ensures I only recalculate scores
+  // when options or weights change.
+  // This prevents unnecessary recalculations.
   const scoredOptions = useMemo(() => {
-    // Scoring function:
-    // higher growth/salary/interest = better
-    // higher stress = worse (so subtract it)
+
+    // Core scoring function.
+    // Higher growth/salary/interest increases score.
+    // Higher stress DECREASES score.
     const score = (o) =>
       o.growth * weights.growth +
       o.salary * weights.salary +
       o.interest * weights.interest -
       o.stress * weights.stress;
 
-    // Attach score to each option + sort from best to worst
+    // Attach score to each option
+    // Then sort from highest score to lowest.
     return options
       .map((o) => ({ ...o, score: score(o) }))
       .sort((a, b) => b.score - a.score);
-  }, [options, weights]);
 
-  // The top option after sorting is the recommended option
+  }, [options, weights]); // Only rerun if these change.
+
+
+  // The first option after sorting is automatically the best.
   const best = scoredOptions[0];
 
-  // Update a rating on a specific option (ex: AI Team interest -> 10)
+
+  // STATE UPDATERS
+
+  // Update a single rating inside one option.
+  // Example: user changes interest from 7 to 10.
   const updateOption = (id, field, value) => {
+
+    // I map through all options,
+    // find the matching one,
+    // and immutably update that field.
     setOptions((prev) =>
-      prev.map((o) => (o.id === id ? { ...o, [field]: Number(value) } : o))
+      prev.map((o) =>
+        o.id === id ? { ...o, [field]: Number(value) } : o
+      )
     );
   };
 
-  // Add a new option (prompt() is simplest MVP UI)
+
+  // Add a new decision option.
+  // Using prompt() keeps this MVP simple.
   const addOption = () => {
     const name = prompt("Name your option (e.g., 'Lawyer'):");
     if (!name) return;
 
-    const id = `${Date.now()}`; // simple unique id
+    // Use timestamp as simple unique ID.
+    const id = `${Date.now()}`;
+
+    // Default new options to neutral ratings (5s).
     setOptions((prev) => [
       ...prev,
       { id, name, growth: 5, salary: 5, interest: 5, stress: 5 },
     ]);
   };
 
-  // Remove an option by id
+
+  // Remove an option by ID.
   const removeOption = (id) => {
     setOptions((prev) => prev.filter((o) => o.id !== id));
   };
 
+
+  // UI RENDER
+
   return (
     <div className="container">
+
       <header className="header">
         <div>
           <h1>DecisionLab</h1>
+
           <p className="sub">
-            Compare options with weighted priorities. Stress counts against the score. Adjust how important each factor is to you. 
-  Higher numbers mean that factor has more influence on the final score.
+            Compare options with weighted priorities.
+            Stress counts against the score.
+            Adjust how important each factor is to you.
+            Higher numbers mean that factor has more influence on the final score.
           </p>
         </div>
 
@@ -80,21 +128,32 @@ export default function App() {
         </button>
       </header>
 
+
       <section className="grid">
+
+        {/* PRIORITIES PANEL */}
         <div className="panel">
-        <h2>Priorities</h2>
+          <h2>Priorities</h2>
 
-        <div className="prioritiesCard">
-        <WeightSliders weights={weights} setWeights={setWeights} />
+          <div className="prioritiesCard">
+            {/* Sliders modify the weights state */}
+            <WeightSliders weights={weights} setWeights={setWeights} />
 
-      <button className="btn secondary" onClick={() => setWeights(DEFAULT_WEIGHTS)}>
-      Reset weights
-    </button>
-  </div>
-</div>
+            {/* Reset brings weights back to neutral */}
+            <button
+              className="btn secondary"
+              onClick={() => setWeights(DEFAULT_WEIGHTS)}
+            >
+              Reset weights
+            </button>
+          </div>
+        </div>
 
+
+        {/* OPTIONS PANEL */}
         <div className="panel">
           <h2>Options</h2>
+
           <div className="cards">
             {scoredOptions.map((o, idx) => (
               <OptionCard
@@ -109,9 +168,12 @@ export default function App() {
           </div>
         </div>
 
+
+        {/* RESULTS PANEL */}
         <div className="panel">
           <ResultPanel best={best} weights={weights} />
         </div>
+
       </section>
     </div>
   );
